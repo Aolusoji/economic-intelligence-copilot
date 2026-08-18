@@ -2,7 +2,7 @@
 
 **An Open-Source Predictive Economic Decision-Support Framework for U.S. Trade Policy, Industrial Strategy, and Domestic Manufacturing Resilience**
 
-Author: Adenekan Olusoji
+Author: Olusoji Adenekan
 
 ---
 
