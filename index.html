@@ -282,6 +282,102 @@
     .content{padding:0 20px;}
   }
 </style>
+
+<style>
+.sidebar a .download-icon {
+  display: inline-flex;
+  width: 24px;
+  min-width: 24px;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  line-height: 1;
+  color: #8293a8;
+}
+</style>
+
+
+
+<style>
+#platformusage .platform-metrics-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+}
+#platformusage .platform-metric-card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  min-height: 190px !important;
+  padding: 22px 24px !important;
+  border: 1px solid rgba(126, 164, 205, .22) !important;
+  border-radius: 8px !important;
+  background: rgba(42, 65, 94, .56) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+#platformusage .platform-metric-label {
+  display: block !important;
+  min-height: 20px !important;
+  margin: 0 0 8px !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: #7fa6d3 !important;
+  white-space: normal !important;
+}
+#platformusage .platform-metric-value {
+  display: block !important;
+  margin: 0 0 6px !important;
+  font-family: "IBM Plex Sans", sans-serif !important;
+  font-size: 34px !important;
+  font-weight: 600 !important;
+  line-height: 1.05 !important;
+  color: #e8eef6 !important;
+}
+#platformusage .platform-metric-chart {
+  width: 100% !important;
+  height: 42px !important;
+  margin: 4px 0 10px !important;
+}
+#platformusage .platform-metric-chart svg {
+  display: block !important;
+  width: 100% !important;
+  height: 42px !important;
+}
+#platformusage .metric-baseline {
+  fill: none !important;
+  stroke: rgba(127, 166, 211, .38) !important;
+  stroke-width: 1.5 !important;
+  vector-effect: non-scaling-stroke !important;
+}
+#platformusage .platform-metric-note {
+  display: block !important;
+  margin-top: auto !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  color: #91a9c4 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+#platformusage .platform-metrics-info {
+  margin-top: 20px !important;
+}
+#platformusage .platform-metrics-info .section-desc {
+  margin-bottom: 0 !important;
+}
+@media (max-width: 760px) {
+  #platformusage .platform-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -313,6 +409,7 @@
     <button class="side-link" data-target="industrycomp">Industry Competitiveness</button>
     <button class="side-link" data-target="sources">Data &amp; Methodology</button>
     <button class="side-link" data-target="roadmap">Future Research Roadmap</button>
+    <button class="side-link" data-target="platformusage">Platform Usage</button>
   </nav>
 
   <div class="quick-links">
@@ -324,15 +421,10 @@
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 12L3 7h3V1h4v6h3l-5 5zM2 14h12v2H2z"/></svg>
       Download research paper (PDF)
     </a>
-    <div class="platform-usage" style="margin-top:14px; border-left:2px solid var(--brass-dim); padding-left:12px;">
-      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--brass); margin-bottom:6px;">Platform Usage</div>
-      <div style="font-size:12.5px; color:var(--faint); line-height:1.7;">
-        Tracked Visits: <span id="statUsers" style="color:#e8e8e8; font-weight:600;">&mdash;</span><br>
-        EIC Downloads: <span id="statDownloads" style="color:#e8e8e8; font-weight:600;">&mdash;</span><br>
-        GitHub Stars: <span id="statStars" style="color:#e8e8e8; font-weight:600;">&mdash;</span><br>
-        GitHub Forks: <span id="statForks" style="color:#e8e8e8; font-weight:600;">&mdash;</span>
-      </div>
-    </div>
+        <a href="https://github.com/Aolusoji/economic-intelligence-copilot/releases/download/v1.0.0/EIC-Dashboard-v1.0.0.html" download>
+          <span class="download-icon" aria-hidden="true">↓</span>
+          Download Dashboard
+        </a>
   </div>
 
   <div class="upload-box">
@@ -756,6 +848,68 @@
         <li>No retrospective validation against specific historical disruption episodes (e.g., 2018–19 tariff actions, 2020 COVID shock).</li>
         <li>N = 209 is a modest panel by econometric standards, though genuinely real and multi-source.</li>
       </ul>
+    </div>
+  </section>
+
+
+  <!-- PLATFORM USAGE -->
+  <section id="platformusage" class="page">
+    <div class="section-head">
+      <h2 class="section-title">Platform Usage &amp; Adoption</h2>
+    </div>
+    <p class="section-desc">Live indicators of public engagement with the Economic Intelligence Copilot.</p>
+
+    <div class="platform-metrics-grid">
+      <article class="platform-metric-card">
+        <div class="platform-metric-label">Tracked Visits</div>
+        <div class="platform-metric-value" id="statUsers">&mdash;</div>
+        <div class="platform-metric-chart" aria-hidden="true">
+          <svg viewBox="0 0 240 42" preserveAspectRatio="none">
+            <path class="metric-baseline" d="M0 35 H240"></path>
+          </svg>
+        </div>
+        <div class="platform-metric-note">Tracked website visits</div>
+      </article>
+
+      <article class="platform-metric-card">
+        <div class="platform-metric-label">Dashboard Downloads</div>
+        <div class="platform-metric-value" id="statDownloads">&mdash;</div>
+        <div class="platform-metric-chart" aria-hidden="true">
+          <svg viewBox="0 0 240 42" preserveAspectRatio="none">
+            <path class="metric-baseline" d="M0 35 H240"></path>
+          </svg>
+        </div>
+        <div class="platform-metric-note">EIC dashboard downloads</div>
+      </article>
+
+      <article class="platform-metric-card">
+        <div class="platform-metric-label">GitHub Stars</div>
+        <div class="platform-metric-value" id="statStars">&mdash;</div>
+        <div class="platform-metric-chart" aria-hidden="true">
+          <svg viewBox="0 0 240 42" preserveAspectRatio="none">
+            <path class="metric-baseline" d="M0 35 H240"></path>
+          </svg>
+        </div>
+        <div class="platform-metric-note">Repository stars</div>
+      </article>
+
+      <article class="platform-metric-card">
+        <div class="platform-metric-label">GitHub Forks</div>
+        <div class="platform-metric-value" id="statForks">&mdash;</div>
+        <div class="platform-metric-chart" aria-hidden="true">
+          <svg viewBox="0 0 240 42" preserveAspectRatio="none">
+            <path class="metric-baseline" d="M0 35 H240"></path>
+          </svg>
+        </div>
+        <div class="platform-metric-note">Repository forks</div>
+      </article>
+    </div>
+
+    <div class="panel platform-metrics-info">
+      <div class="panel-title">About These Metrics</div>
+      <p class="section-desc">
+        Tracked Visits are reported through GoatCounter. Dashboard Downloads, GitHub Stars, and GitHub Forks are retrieved from GitHub.
+      </p>
     </div>
   </section>
 
@@ -2381,7 +2535,9 @@ const GOATCOUNTER_CODE = 'aolusoji-eic';
       if (Array.isArray(releases)) {
         releases.forEach(r => {
           (r.assets || []).forEach(a => {
-            total += Number(a.download_count || 0);
+            if (a.name === 'EIC-Dashboard-v1.0.0.html') {
+              total += Number(a.download_count || 0);
+            }
           });
         });
       }
