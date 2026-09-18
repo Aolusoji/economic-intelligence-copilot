@@ -868,7 +868,7 @@
             <path class="metric-baseline" d="M0 35 H240"></path>
           </svg>
         </div>
-        <div class="platform-metric-note">Tracked website visits</div>
+        <div class="platform-metric-note">Cumulative tracked website visits</div>
       </article>
 
       <article class="platform-metric-card">
@@ -2551,9 +2551,12 @@ const GOATCOUNTER_CODE = 'aolusoji-eic';
   // This reads the count; the GoatCounter tracking script below records visits.
   if (GOATCOUNTER_CODE !== 'YOUR_GOATCOUNTER_CODE') {
     try {
+      // Use one canonical EIC path for the cumulative visit total.
+      // This avoids splitting counts between trailing-slash/hash variants.
+      const EIC_TRACKING_PATH = '/economic-intelligence-copilot';
       const endpoint =
         `https://${GOATCOUNTER_CODE}.goatcounter.com/counter/` +
-        `${encodeURIComponent(location.pathname)}.json`;
+        `${encodeURIComponent(EIC_TRACKING_PATH)}.json`;
 
       const res = await fetch(endpoint, { cache: 'no-store' });
       if (res.ok) {
@@ -2572,6 +2575,11 @@ const GOATCOUNTER_CODE = 'aolusoji-eic';
 // Load GoatCounter only after a real site code has been supplied.
 // GoatCounter handles sessions/bot filtering better than the old raw hit counter.
 if (GOATCOUNTER_CODE !== 'YOUR_GOATCOUNTER_CODE') {
+  // Record all EIC dashboard visits under one canonical path, regardless of
+  // which dashboard tab/hash is open or whether the URL has a trailing slash.
+  window.goatcounter = window.goatcounter || {};
+  window.goatcounter.path = '/economic-intelligence-copilot';
+
   const gc = document.createElement('script');
   gc.async = true;
   gc.src = 'https://gc.zgo.at/count.js';
