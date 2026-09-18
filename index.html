@@ -2582,5 +2582,60 @@ if (GOATCOUNTER_CODE !== 'YOUR_GOATCOUNTER_CODE') {
   document.body.appendChild(gc);
 }
 </script>
+
+<script>
+(function () {
+  const links = Array.from(document.querySelectorAll('.side-link[data-target]'));
+  const pages = Array.from(document.querySelectorAll('.page'));
+  if (!links.length || !pages.length) return;
+
+  function validTarget(id) {
+    return !!id &&
+      !!document.getElementById(id) &&
+      links.some(link => link.dataset.target === id);
+  }
+
+  function activateSection(id) {
+    if (!validTarget(id)) id = 'overview';
+
+    pages.forEach(page => {
+      page.classList.toggle('active', page.id === id);
+    });
+
+    links.forEach(link => {
+      link.classList.toggle('active', link.dataset.target === id);
+    });
+  }
+
+  // Save the selected dashboard section in the URL.
+  links.forEach(link => {
+    link.addEventListener('click', function () {
+      const id = this.dataset.target;
+      if (!validTarget(id)) return;
+
+      const hash = '#' + encodeURIComponent(id);
+      if (window.location.hash !== hash) {
+        history.pushState(null, '', hash);
+      }
+    });
+  });
+
+  // Restore the same section after refresh or from a shared/bookmarked URL.
+  const initialSection = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+  if (validTarget(initialSection)) {
+    activateSection(initialSection);
+  }
+
+  // Support browser Back/Forward and manually changed hashes.
+  function restoreFromHash() {
+    const id = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    activateSection(validTarget(id) ? id : 'overview');
+  }
+
+  window.addEventListener('popstate', restoreFromHash);
+  window.addEventListener('hashchange', restoreFromHash);
+})();
+</script>
+
 </body>
 </html>
