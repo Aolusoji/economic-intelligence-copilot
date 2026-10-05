@@ -398,7 +398,6 @@
 
   <nav class="side-nav">
     <button class="side-link active" data-target="overview">Overview</button>
-    <button class="side-link" data-target="importance">National Importance</button>
     <button class="side-link" data-target="regression">Panel Regression</button>
     <button class="side-link" data-target="robustness">Robustness &amp; Hausman</button>
     <button class="side-link" data-target="forecast">Forecast Evaluation</button>
@@ -498,66 +497,6 @@
         <div class="panel-title">Trade Balance, 2015–2025 ($ billions)</div>
         <div class="chart-wrap"><canvas id="balanceChart"></canvas></div>
       </div>
-    </div>
-  </section>
-
-  <!-- NATIONAL IMPORTANCE -->
-  <section id="importance" class="page">
-    <div class="section-head"><h2 class="section-title">National Importance</h2></div>
-    <p class="section-desc">Why this matters at a national level, and who would actually use it — in plain terms, not econometric ones.</p>
-
-    <div class="panel" style="margin-bottom:24px;">
-      <p style="font-size:14.5px; line-height:1.7; color:var(--text);">The United States depends on manufacturing subsectors that are, to varying and largely unmeasured degrees, dependent on a small number of foreign countries for critical inputs. When that dependence is concentrated — as this tool's real data shows it is for subsectors like Wood Products and Printing — a single country's export restriction, tariff, or disruption can affect U.S. production, employment, and prices before policymakers have any early-warning signal that it was coming. This framework exists to give federal agencies, state economic-development bodies, and manufacturers a common, data-grounded, continuously-updatable view of exactly where that risk is concentrated and how it is likely to move — something that is often dispersed across multiple federal datasets and analytical resources rather than presented through a single integrated decision-support framework.</p>
-    </div>
-
-    <div class="panel-title" style="margin-bottom:16px;">Potential Applications</div>
-    <div class="source-grid" style="margin-bottom:32px;">
-      <div class="source-card">
-        <div class="agency">Trade Policy</div>
-        <h4>Exploratory Policy Illustration</h4>
-        <p>See the illustrative, model-implied association between a hypothetical tariff or export restriction and output — a starting point for discussion, not a causal impact estimate, pending the exogenous-variation research design described in the roadmap.</p>
-      </div>
-      <div class="source-card">
-        <div class="agency">Supply Chains</div>
-        <h4>Risk Monitoring</h4>
-        <p>Track which manufacturing subsectors are becoming more import-concentrated year over year, using a real, comparable, continuously updatable indicator.</p>
-      </div>
-      <div class="source-card">
-        <div class="agency">Manufacturing</div>
-        <h4>Competitiveness Analysis</h4>
-        <p>See how a subsector's output relates to its trade activity and labor inputs, benchmarked against 18 other real manufacturing subsectors.</p>
-      </div>
-      <div class="source-card">
-        <div class="agency">Industrial Policy</div>
-        <h4>Resilience Planning</h4>
-        <p>Identify subsectors that may warrant further evaluation for supplier-diversification or domestic-capacity strategies, using real concentration data rather than assumption.</p>
-      </div>
-      <div class="source-card">
-        <div class="agency">Economic Development</div>
-        <h4>Decision Support</h4>
-        <p>Give state and regional economic-development agencies a standardized, national point of comparison instead of relying on a single region's anecdotal picture.</p>
-      </div>
-      <div class="source-card">
-        <div class="agency">National Security</div>
-        <h4>Strategic Dependency Assessment</h4>
-        <p>Flag which subsectors depend most heavily on a small number of countries for critical inputs — a first, necessary step toward reducing that dependence.</p>
-      </div>
-    </div>
-
-    <div class="panel-title" style="margin-bottom:16px;">Who This Is Built For</div>
-    <table class="ledger">
-      <thead><tr><th>User</th><th>How they would use it</th></tr></thead>
-      <tbody>
-        <tr><td><b>Federal trade &amp; industrial-policy agencies</b></td><td>A shared, real-data reference for comparing model-implied associations under exploratory scenarios and prioritizing manufacturing-resilience investment.</td></tr>
-        <tr><td><b>State economic-development agencies</b></td><td>A standardized way to see how their state's key manufacturing subsectors compare nationally on concentration risk and output trends.</td></tr>
-        <tr><td><b>Manufacturers</b></td><td>A concrete, quantified sense of how exposed their subsector is to a hypothetical supply disruption, using the real Scenario Simulator.</td></tr>
-        <tr><td><b>Researchers &amp; policy analysts</b></td><td>An open-source, reproducible starting point — real data, real code, documented methodology — rather than a black box.</td></tr>
-      </tbody>
-    </table>
-
-    <div class="callout" style="margin-top:28px;">
-      <span class="stamp">Why this matters now</span>
-      <p>Federal agencies currently produce trade, employment, productivity, and import data <i>separately</i>, on different systems, updated on different schedules (Section 4.2 of the companion paper documents this directly, from firsthand experience assembling this exact dataset). This framework demonstrates, with real results, that integrating those sources into one continuously updatable national resource is both possible and analytically valuable — not a hypothetical proposal, but a working proof of concept built on real federal data.</p>
     </div>
   </section>
 
